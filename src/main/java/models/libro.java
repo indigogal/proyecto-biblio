@@ -1,7 +1,12 @@
+package models;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class libro {
+// se implementa Serializable para poder guardar instancias del objeto
+public class libro implements Serializable {
+  private static final long serialVersionUID = 1L;
   // Constructor
   private String nombre;
   private ArrayList<String> autores = new ArrayList<String>();
@@ -51,7 +56,7 @@ public class libro {
     return this.nombre;
   }
 
-  public String getAutor() {
+  public String getAutoresString() {
     String retAutores = "";
     for (int i = 0; i < this.autores.size(); i++) {
       retAutores = retAutores + " " + autores.get(i) + ",";
@@ -59,7 +64,7 @@ public class libro {
     return retAutores;
   }
 
-  public String getGeneros() {
+  public String getGenerosString() {
     String retGeneros = "";
     for (int i = 0; i < this.generos.size(); i++) {
       retGeneros = retGeneros + " " + generos.get(i) + ",";
@@ -88,5 +93,18 @@ public class libro {
   }
 
   // Setters
+  // Misc
+  public void prestarLibro() {
+    if (this.disponibles > 0) {
+      this.disponibles -= 1;
+    }
+    // agregar un else que abra una modal screen con mensaje de error
+  }
 
+  public void regresarLibro() {
+    if (this.disponibles < this.stock) {
+      this.disponibles += 1;
+    }
+    // agregar else que abra modal screen con error
+  }
 }
