@@ -12,7 +12,7 @@ public class libro implements Serializable {
   private ArrayList<String> autores = new ArrayList<String>();
   private ArrayList<String> generos = new ArrayList<String>();
   private String tipo; // Hardback, Soft back or Ebook
-  private Integer ISBN; // Codigo del libro
+  private Integer ISBN; // Codigo del libro, actuara como ID
   private Integer stock;
   private Integer disponibles;
   private Integer paginas;
